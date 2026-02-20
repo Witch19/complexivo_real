@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { AppBar, Toolbar, Typography, Button, Stack } from "@mui/material";
 
 import MesasPage from "./pages/MesasPage";
