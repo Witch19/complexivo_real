@@ -1,10 +1,7 @@
 from django.urls import path
-from rest_framework.routers import DefaultRouter
-from .views import MarcaViewSet, VehiculoViewSet
+from .views import mesasListView, pedidosListCreateView
 
-router = DefaultRouter()
-router.register(r"marcas", MarcaViewSet, basename="marcas")
-router.register(r"vehiculos", VehiculoViewSet, basename="vehiculos")
-
-urlpatterns = []
-urlpatterns += router.urls
+urlpatterns = [
+    path("mesas/", mesasListView.as_view()),
+    path("pedidos/", pedidosListCreateView.as_view()),
+]
