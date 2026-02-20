@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
 import { getMesas } from "../api/mesas.api";
 
-export default function ShowsPage() {
-  const [shows, setShows] = useState<any[]>([]);
+export default function MesasPage() {
+  const [mesas, setMesas] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
     getMesas()
-      .then((data) => setShows(data.results || data))
+      .then((data) => setMesas(data.results || data))
       .catch(() => setError("Error cargando funciones"))
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <p>Cargando shows...</p>;
+  if (loading) return <p>Cargando mesas...</p>;
   if (error) return <p>{error}</p>;
 
   return (
     <div>
       <h2>Funciones</h2>
-      {shows.map((s) => (
+      {mesas.map((s) => (
         <div key={s.id}>
           <b>{s.name}</b> - {s.capacity} - Seats: {s.is_available}
         </div>

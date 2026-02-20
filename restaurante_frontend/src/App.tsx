@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
+import { AppBar, Toolbar, Typography, Button, Stack } from "@mui/material";
 
-function App() {
-  const [count, setCount] = useState(0)
+import MesasPage from "./pages/MesasPage";
+import PedidosPage from "./pages/PedidosPage";
 
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <BrowserRouter>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            Vehículos UI (MUI)
+          </Typography>
+
+          <Stack direction="row" spacing={1} sx={{ flexWrap: "wrap" }}>
+            <Button color="inherit" component={Link} to="/shows">Mesas</Button>
+            <Button color="inherit" component={Link} to="/reservations">Pedidos</Button>
+          </Stack>
+        </Toolbar>
+      </AppBar>
+
+      <Routes>
+        <Route path="/mesas" element={<MesasPage />} />
+        <Route path="/pedidos" element={<PedidosPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
